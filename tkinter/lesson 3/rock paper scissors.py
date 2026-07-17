@@ -6,6 +6,8 @@ root=Tk()
 root.geometry("500x500")
 root.config(background="green")
 root.title("rps game")
+PScoreVal=0
+CScoreVal=0
 
 #fonts=list(font.families())
 #fonts.sort()
@@ -14,6 +16,7 @@ root.title("rps game")
 ChoiceList=["rock","paper","scissors"]
 
 def PlayGame(PChoice):
+    global PScoreVal, CScoreVal
     CChoice=random.choice(ChoiceList)
     CChoiceLabel.config(text=CChoice)
     PChoiceLabel.config(text=PChoice)
@@ -22,18 +25,30 @@ def PlayGame(PChoice):
     elif CChoice=="rock":
         if PChoice=="paper":
             winnerLabel.config(text="Player WINS")
+            PScoreVal+=1
+            PScoreLabel.config(text=str(PScoreVal))
         if PChoice=="scissors":
             winnerLabel.config(text="Computer WINS")
+            CScoreVal+=1
+            CScoreLabel.config(text=str(CScoreVal))
     elif CChoice=="paper":
-        if PChoice=="paper":
-            winnerLabel.config(text="Player WINS")
         if PChoice=="scissors":
+            winnerLabel.config(text="Player WINS")
+            PScoreVal+=1
+            PScoreLabel.config(text=str(PScoreVal))
+        if PChoice=="rock":
             winnerLabel.config(text="Computer WINS")
+            CScoreVal+=1
+            CScoreLabel.config(text=str(CScoreVal))
     elif CChoice=="scissors":
-        if PChoice=="paper":
+        if PChoice=="rock":
             winnerLabel.config(text="Player WINS")
-        if PChoice=="scissors":
+            PScoreVal+=1
+            PScoreLabel.config(text=str(PScoreVal))
+        if PChoice=="paper":
             winnerLabel.config(text="Computer WINS")
+            CScoreVal+=1
+            CScoreLabel.config(text=str(CScoreVal))
 
 headingLabel=Label(root,text="Rock Paper Scissors Game",font=("Arial",25,"bold"),bg="green",fg="black")
 headingLabel.pack()
