@@ -53,7 +53,7 @@ def restart():
     for i in range(3):
         for j in range(3):
             board[i][j]["text"]=""
-    x=1
+    x=2
 
 def multiplayer():
     global Multi
